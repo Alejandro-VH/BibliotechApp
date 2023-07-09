@@ -1,0 +1,28 @@
+@startuml
+
+skin rose
+left to right direction
+Usuarios"1"--->"1"Sistema:interactuan
+Sistema"1"--->"0..*"Libro:gestiona
+class Usuarios
+{
+rut
+nombre
+apellido
+contrasenia
+}
+class Sistema
+{
+Libros
+}
+class Libro
+{
+codigo
+Titulo
+Autor
+Categoria
+NumeroDeCopias
+Precio
+}
+
+@enduml

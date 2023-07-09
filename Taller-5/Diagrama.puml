@@ -1,0 +1,90 @@
+@startuml
+
+skin rose
+left to right direction
+
+SistemaImpl--->Sistema:implementa
+SistemaImpl"1"--->"0..*"Utils.GuardarArchivos:puede
+SistemaImpl"1"--->"0..*"Utils.LecturaArchivos:puede
+SistemaImpl"1"--->"0..*"Entities.Libro:tiene
+SistemaImpl"1"--->"0..*"Entities.Usuario:tiene
+SistemaImpl"1"--->"0..*"Entities.Reservas:tiene
+
+Interface Sistema
+{
++iniciarPrograma():void
+}
+class SistemaImpl
+{
+-form:Login
+-usuarioList: LinkedList<Usuario>
+-libroList: LinkedList<Libro>
+-reservasList: LinkedList<String>
++SistemaImpl():void
++iniciarPrograma():void
+}
+package Utils
+{
+class GuardarArchivos
+{
++agregarRegistro(lista: LinkedList<Reservas>):void}
++agregarLibro(lista:LinkedList<Libro>): void
+}
+class LecturaArchivos
+{
++leerArchivoLibros(books LinkedList<Libro>):LinkedList<Libro>
++leerArchivoUsuarios(users: LinkedList<Usuario>):LinkedList<Usuario>
++leerArchivoReservas(reservas: LinkedList<Reservas>):LinkedList<Reservas>
+}
+
+}
+package Entities
+{
+class Libro
+{
+-isbn:String
+-titulo:String
+-autor:String
+-categoria:String
+-copias:int
+-precio:int
++Libro(isbn: String, titulo:String, autor:String, categoria:String, copias: int, precio:int):void
++getIsbn():String
++getTitulo():String
++getAutor():String
++getCategoria():String
++getCopias():int
++getPrecio():int
++addCopia():void
++prestarCopias():boolean
+}
+class Usuario
+{
+-rut:String
+-nombre:String
+-apellido:String
+-contrasenia:String
++Usuario(rut:String, nombre:String, apellido:String, contrasenia:String):void
++getRut():String
++getNombre():String
++getApellido():String
++getContrasenia():String
+}
+class Reservas
+{
+-rut_vendedor:String
+-nombre_vendedor:String
+-apellido:String
+-isbn:String
+-nombre_libro:String
+-tipo_transaccion:String
++Reservas(rut_vendedor:String, nombre_vendedor:String, apellido:String, isbn:String, nombre_libro:String, tipo_transaccion:String):void
++getRut_vendedor():String
++getNombre_vendedor():String
++getApellido():String
++getIsbn():String
++getNombre_libro():String
++getTipo_transaccion():String
+}
+}
+@enduml
